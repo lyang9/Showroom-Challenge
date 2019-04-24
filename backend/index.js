@@ -20,9 +20,17 @@ server.get('/', (req, res) => {
 });
 
 // GET all users
+server.get('/api/users', (req, res) => {
+  db('users')
+    .then(users => {
+      res.status(200).json(users);
+    })
+    .catch(err => res.status(500).json(err));
+});
 
 
 // GET single user
+
 
 
 // POST new user
