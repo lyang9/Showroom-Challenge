@@ -14,6 +14,15 @@ server.get('/', (req, res) => {
   res.send('It is working!');
 });
 
+// GET all users
+
+
+// GET single user
+
+
+// POST new user
+
+
 // listening port
 const port = 5000;
 server.listen(port, function() {
