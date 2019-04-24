@@ -2,11 +2,9 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const knex = require('knex');
 
-// Configuration 
-const knexConfig = require('./knexfile.js');
-const db = knex(knexConfig.development);
+// API endpoints routes
+const usersRoutes = require('./users/usersRoutes.js');
 
 // middleware
 const server = express();
@@ -19,52 +17,7 @@ server.get('/', (req, res) => {
   res.send('It is working!');
 });
 
-// GET all users
-server.get('/api/users', (req, res) => {
-  db('users')
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(err => res.status(500).json(err));
-});
-
-
-// GET single user
-server.get('/api/users/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const user = await db('users')
-      .where({ id })
-      .first();
-
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-
-// POST new user
-server.post('/api/users', (req, res) => {
-  // grab data from body
-  const user = req.body;
-
-  // save data to database
-  db.insert(user)
-    .into('users')
-    .then(ids => {
-      // return id of newly created record
-      res.status(201).json(ids);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
-})
+server.use('/api/users', usersRoutes);
 
 // listening port
 const port = 5000;
