@@ -30,7 +30,23 @@ server.get('/api/users', (req, res) => {
 
 
 // GET single user
+server.get('/api/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
 
+    const user = await db('users')
+      .where({ id })
+      .first();
+
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 
 // POST new user
