@@ -3,7 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 
-// API endpoints routes
+// import routers
 const usersRoutes = require('./users/usersRoutes.js');
 const genresRoutes = require('./genres/genresRoutes.js');
 
@@ -18,6 +18,7 @@ server.get('/', (req, res) => {
   res.send('It is working!');
 });
 
+// API endpoints routes
 server.use('/api/users', usersRoutes);
 server.use('/api/genres', genresRoutes);
 
