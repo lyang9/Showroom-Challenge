@@ -6,6 +6,7 @@ const cors = require('cors');
 // import routers
 const usersRoutes = require('./users/usersRoutes.js');
 const genresRoutes = require('./genres/genresRoutes.js');
+const showsRoutes = require('./shows/showsRoutes.js');
 
 // middleware
 const server = express();
@@ -21,6 +22,7 @@ server.get('/', (req, res) => {
 // API endpoints routes
 server.use('/api/users', usersRoutes);
 server.use('/api/genres', genresRoutes);
+server.use('/api/shows', showsRoutes);
 
 // listening port
 const port = 5000;
