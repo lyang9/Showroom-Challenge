@@ -38,6 +38,20 @@ router.get('/:id', async (req, res) => {
 });
 
 
+// GET all comments for specific show_id
+router.get('/:id/comments', (req, res) => {
+  const { id } = req.params;
+  db('comments')
+    .where({ show_id: id })
+    .then(comments => {
+      res.status(200).json(comments);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    })
+});
+
+
 // POST new show
 router.post('/', (req, res) => {
   const show = req.body;
