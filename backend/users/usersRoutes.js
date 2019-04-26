@@ -38,6 +38,20 @@ router.get('/:id', async (req, res) => {
 });
 
 
+// GET all shows for specific user_id
+router.get('/:id/shows', (req, res) => {
+  const { id } = req.params;
+  db('shows')
+    .where({ user_id: id })
+    .then(shows => {
+      res.status(200).json(shows);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    })
+});
+
+
 // POST new user
 router.post('/', (req, res) => {
   // grab data from body
