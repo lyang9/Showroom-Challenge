@@ -18,13 +18,6 @@ router.get('/', (req, res) => {
 });
 
 
-// GET all shows for specific genre_id
-
-
-
-// GET all shows for specific user_id
-
-
 // GET one show
 router.get('/:id', async (req, res) => {
   try {
