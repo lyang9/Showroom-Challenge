@@ -17,4 +17,19 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+
+// GET all shows for specific genre_id
+router.get('/:id/shows', (req, res) => {
+  const { id } = req.params;
+  db('shows')
+    .where({ genre_id: id })
+    .then(shows => {
+      res.status(200).json(shows);
+    })
+    .catch(err => {
+      res.status(500).json(err);
+    })
+});
+
+
 module.exports = router;
