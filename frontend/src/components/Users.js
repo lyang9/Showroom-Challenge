@@ -38,6 +38,9 @@ class Users extends Component {
           Your user id is: {this.state.id}.
         </Typography>
         <ul>
+          <Typography variant='h5' gutterBottom>
+            Master List of All Users:
+          </Typography>
           {this.state.users.map(user => {
             return (
               <Link to={`/user/${user.id}`}>
