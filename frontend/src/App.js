@@ -4,12 +4,16 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 
-class App extends Component () {
+class App extends Component {
   render() {
     return (
       <React.Fragment>
         <Navbar />
+        <Switch>
+          <Route exact path='/' component={Home}></Route>
+        </Switch>
       </React.Fragment>
     );
   }
