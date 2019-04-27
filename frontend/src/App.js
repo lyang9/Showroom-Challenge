@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
+// import axios from 'axios';
 
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Users from './components/Users';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={Home}></Route>
+          <Route path='/users' component={Users}></Route>
         </Switch>
       </React.Fragment>
     );
