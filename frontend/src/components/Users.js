@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,10 +16,8 @@ class Users extends Component {
     super(props);
     this.state = {
       users: [],
-      user: {
-        id: 1,
-        username: 'ckIrECaP',
-      }
+      id: 1,
+      username: 'ckIrECaP',
     };
   };
 
@@ -40,9 +38,13 @@ class Users extends Component {
           Your user id is: {this.state.id}.
         </Typography>
         <ul>
-          {this.state.users.map(user => (
-            <li key={user.id}>{user.username}</li>
-          ))}
+          {this.state.users.map(user => {
+            return (
+              <Link to={`/user/${user.id}`}>
+                <li key={user.id}>{user.username}</li>
+              </Link>
+            );
+          })}
         </ul>
       </div>
     );
