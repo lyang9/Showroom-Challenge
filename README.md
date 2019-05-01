@@ -1,4 +1,18 @@
+# Showroom
+## Take Home Technical Challenge
 
+### Opening Remarks
+
+You will be submitting a full stack application for this challenge. The technologies you must use:
+- **Frontend:** React
+  - Use create-react-app
+  - Use react-router-dom
+  - Bootstrap or equivalent
+- **Backend:** Express, Sequelize w/ SQLite
+
+You will be submitting a GITHUB repo with two seperate folders:
+- `/backend`
+- `/frontend`
 
 ## TV Show Watchlist App
 
