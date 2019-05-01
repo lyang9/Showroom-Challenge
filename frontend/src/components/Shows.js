@@ -14,12 +14,13 @@ class Shows extends Component {
     this.state = {
       shows: [],
       title: '',
+      users: [],
       username: '',
     }
-  }
+  };
 
   componentDidMount() {
-    axios.get('')
+    axios.get('http://localhost:5000/api/shows')
       .then(response => this.setState({ shows: response.data }))
       .catch(err => console.log(err));
   }
@@ -32,6 +33,11 @@ class Shows extends Component {
         <Typography variant='h3' gutterBottom>
           Masterlist of TV Shows
         </Typography>
+        {this.state.shows.map(show => {
+          return (
+            <li key={show.id}>{show.title}</li>
+          )
+        })}
         <Typography variant='h5' gutterBottom>
           {this.state.title}
         </Typography>
