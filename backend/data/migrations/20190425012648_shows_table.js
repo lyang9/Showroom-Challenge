@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
 
     shows.string('title', 30)
       .notNullable();
-    shows.string('img_url', 100)
+    shows.binary('img_url', 250)
       .notNullable();
     
     shows.integer('user_id')
