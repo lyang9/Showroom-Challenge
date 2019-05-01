@@ -25,6 +25,18 @@ class Shows extends Component {
       .catch(err => console.log(err));
   }
 
+  componentWillMount() {
+    axios.get('http://localhost:5000/api/users/:id/shows')
+    .then(response => {
+      this.setState({
+        title: response.data[0].title,
+      })
+    })
+    .catch(error => {
+      console.log('Server Error', error)
+    })
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -35,15 +47,13 @@ class Shows extends Component {
         </Typography>
         {this.state.shows.map(show => {
           return (
-            <li key={show.id}>{show.title}</li>
+            <li key={show.id}>{show.title}
+              <Typography variant='h5' gutterBottom>
+                Who's Watching? {this.state.username}
+              </Typography>
+            </li>
           )
         })}
-        <Typography variant='h5' gutterBottom>
-          {this.state.title}
-        </Typography>
-        <Typography variant='h5' gutterBottom>
-          Who's Watching? {this.state.username}
-        </Typography>
       </div>
     );
   }
